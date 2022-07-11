@@ -1,31 +1,32 @@
-# Built by jwan.yaw
+# (library concept) this program generates a random password with combination of the date of the actual day 
+# Built by @jwan.yaw
 
 import datetime
 import string
 import random
 
-# Alle Charakter in einer Liste speichern
+# save all characters in a list
 characters = list(string.digits + string.ascii_letters + "!@#$%^&*()")
 
-# funktion, um das Passwort zu bilden
+# the password generation function
 def generate_random_password():
-    # Länge des Passwortes bestimmen
+    # define the length of the password
     length = int(input("Länge des Passwortes angeben: "))
 
-    # Die Charakter mischen
+    # mix the characters
     random.shuffle(characters)
 
-    # Ein Password als String speichern
+    # save the password as a string
     now = datetime.datetime.now()
     date_string = now.strftime('%d-%m-%Y')
 
-    # ein beliebiges Charakter von einer Liste auswählen und zur Password Variable hinzufügen
+    # choose a random character and add it to the password variable
     password = []
     password.append(date_string)
     for i in range (length):
         password.append(random.choice(characters))
     
-    # Liste in einen String umwandeln
+    # convert the password to a string
     print("".join(password))
 
 # Invoking the function
